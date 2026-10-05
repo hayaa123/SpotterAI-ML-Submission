@@ -9,8 +9,8 @@ def create_model(filename: str) -> CatBoostRegressor:
 
     # Fill missing weight values with the mean and remove rows
     # that have no market_index.
+    df.loc[df["weight"] < 0, "weight"] = pd.NA
     df["weight"] = df["weight"].fillna(df["weight"].mean())
-    df.dropna(subset=["market_index"], inplace=True)
 
     # Extract day, month, and year from the date column.
     dates = pd.to_datetime(df["date"])
@@ -38,7 +38,7 @@ def create_model(filename: str) -> CatBoostRegressor:
     y = df["posted_rate"]
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.8, random_state=42
+        X, y, test_size=0.2, random_state=42
     )
 
     cat_features = [

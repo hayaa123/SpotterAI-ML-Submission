@@ -14,7 +14,7 @@ I have made a Makefile to make it easier to run the scripts. You can use the fol
 - `make` : this will run the main.py script and generate the validation_predictions.csv file.
 - `make clean` : this will remove the trained model and the virtual environment.
 - `make fclean` : this will remove the trained model, the virtual environment, and validation predictions.
-
+- `make re` : this will run fclean then make again.
 The resulted validation_predictions.csv file can be found in the data/ directory.
 
 # Dependency

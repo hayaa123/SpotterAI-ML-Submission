@@ -17,12 +17,12 @@ $(VENV): requirements.txt
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-
-
 clean:
 	rm -rf $(VENV) $(MODEL)
 
 fclean:
 	rm -rf $(VENV) $(MODEL) $(VALIDATION_PREDICTIONS) *.pyc __pycache__ .ipynb_checkpoints
+
+re: fclean all
 
 .PHONY: all score clean fclean
